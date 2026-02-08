@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Code, Terminal, Settings, Copy } from 'lucide-react';
 import { CodeSnippet } from './CodeSnippet';
 import { SandboxConsole } from './SandboxConsole';
+import type { Agent } from '../../types/agent';
 
 interface IntegrationModalProps {
     isOpen: boolean;
     onClose: () => void;
-    agent: any;
+    agent: Agent;
 }
 
 export function IntegrationModal({ isOpen, onClose, agent }: IntegrationModalProps) {
@@ -81,7 +82,7 @@ print(response.json())
                         ].map((tab) => (
                             <button
                                 key={tab.id}
-                                onClick={() => setActiveTab(tab.id as any)}
+                                onClick={() => setActiveTab(tab.id as 'code' | 'sandbox' | 'settings')}
                                 className={`flex items-center gap-2 py-4 text-sm font-medium border-b-2 transition-colors relative ${
                                     activeTab === tab.id 
                                         ? 'text-white border-primary' 

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { AgentCard } from '../ui/AgentCard';
 import { Sparkles, RefreshCw, Terminal, Database, Palette, Cpu } from 'lucide-react';
+import type { Agent } from '../../types/agent';
 
 interface FeaturedAgentsProps {
-    agents: any[];
+    agents: Agent[];
     loading: boolean;
 }
 

@@ -6,10 +6,11 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { IntegrationModal } from '../components/deploy/IntegrationModal';
+import type { Agent } from '../types/agent';
 
 export function AgentDetails() {
     const { id } = useParams();
-    const [agent, setAgent] = useState<any>(null);
+    const [agent, setAgent] = useState<Agent | null>(null);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
 

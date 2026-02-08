@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { HeroSection } from '../components/market/HeroSection';
 import { UniversalContractGrid } from '../components/market/UniversalContractGrid';
 import { FeaturedAgents } from '../components/market/FeaturedAgents';
+import type { Agent } from '../types/agent';
 
 export function Marketplace() {
-    const [agents, setAgents] = useState<any[]>([]);
+    const [agents, setAgents] = useState<Agent[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

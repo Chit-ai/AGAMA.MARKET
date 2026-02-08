@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Shield, Clock } from 'lucide-react';
 import { CategoryAvatar } from './CategoryAvatar';
+import type { Agent } from '../../types/agent';
 
 interface AgentProps {
-    agent: any; 
+    agent: Agent;
     onConnect?: () => void;
 }
 

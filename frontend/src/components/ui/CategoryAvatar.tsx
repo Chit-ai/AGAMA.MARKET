@@ -6,7 +6,14 @@ interface CategoryAvatarProps {
   className?: string;
 }
 
-const CATEGORY_CONFIG: any = {
+interface CategoryConfig {
+  icon: React.ComponentType<{ className?: string }>;
+  gradient: string;
+  shadow: string;
+  border: string;
+}
+
+const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
   coding: {
     icon: Terminal,
     gradient: 'from-blue-600 to-cyan-500',
