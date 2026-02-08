@@ -1,0 +1,32 @@
+site_name: AgentsPlatform (ĀGAMA)
+site_description: The unified marketplace for compliant, verifiable, and composable AI agents.
+site_url: https://Chit-ai.github.io/AGAMA.MARKET/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+
+docs_dir: gitdoc # Pointing to our existing documentation folder
+
+nav:
+  - Home: index.md
+  - Visuals: ui_enhancements.md
+  - API Reference: api_reference.md
+  - Architecture: architecture.md
+  - Contributing: contribution_guide.md
