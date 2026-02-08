@@ -24,6 +24,7 @@ export interface Agent {
     };
     karma?: Record<string, unknown>;
     prakriti?: Record<string, unknown>;
+    ahvana?: Record<string, unknown>;
   };
   sattva?: {
     name: string;
