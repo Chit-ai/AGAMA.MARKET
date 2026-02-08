@@ -1,34 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, FileText, Code, Layers, Users } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-// Import markdown files as raw text
-import indexMd from '../../../gitdoc/index.md?raw';
-import apiReferenceMd from '../../../gitdoc/api_reference.md?raw';
-import architectureMd from '../../../gitdoc/architecture.md?raw';
-import contributionGuideMd from '../../../gitdoc/contribution_guide.md?raw';
-import uiEnhancementsMd from '../../../gitdoc/ui_enhancements.md?raw';
-
 interface DocSection {
   id: string;
   title: string;
   icon: React.ComponentType<{ className?: string }>;
-  content: string;
+  file: string;
 }
 
 const docs: DocSection[] = [
-  { id: 'home', title: 'Overview', icon: Book, content: indexMd },
-  { id: 'api', title: 'API Reference', icon: Code, content: apiReferenceMd },
-  { id: 'architecture', title: 'Architecture', icon: Layers, content: architectureMd },
-  { id: 'ui', title: 'UI Enhancements', icon: FileText, content: uiEnhancementsMd },
-  { id: 'contributing', title: 'Contributing', icon: Users, content: contributionGuideMd },
+  { id: 'home', title: 'Overview', icon: Book, file: 'index.md' },
+  { id: 'api', title: 'API Reference', icon: Code, file: 'api_reference.md' },
+  { id: 'architecture', title: 'Architecture', icon: Layers, file: 'architecture.md' },
+  { id: 'ui', title: 'UI Enhancements', icon: FileText, file: 'ui_enhancements.md' },
+  { id: 'contributing', title: 'Contributing', icon: Users, file: 'contribution_guide.md' },
 ];
 
 export function Docs() {
   const [activeDoc, setActiveDoc] = useState('home');
+  const [content, setContent] = useState('Loading...');
   const currentDoc = docs.find(d => d.id === activeDoc) || docs[0];
+
+  useEffect(() => {
+    setContent('Loading...');
+    fetch(`/docs/${currentDoc.file}`)
+      .then(res => res.text())
+      .then(text => setContent(text))
+      .catch(err => setContent(`Error loading documentation: ${err.message}`));
+  }, [currentDoc.file]);
 
   return (
     <div className="min-h-screen pt-20">
@@ -71,7 +73,7 @@ export function Docs() {
             >
               <div className="prose prose-invert prose-indigo max-w-none">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {currentDoc.content}
+                  {content}
                 </ReactMarkdown>
               </div>
             </motion.div>
