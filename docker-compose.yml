@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agama-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./agents.db
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    volumes:
+      - ./backend/agents.db:/app/agents.db
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - agama-net
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agama-frontend
+    ports:
+      - "5173:80"  # Mapping internal port 80 (nginx) to external 5173 for consistency
+    depends_on:
+      - backend
+    networks:
+      - agama-net
+    restart: always
+
+networks:
+  agama-net:
+    driver: bridge

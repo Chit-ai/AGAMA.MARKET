@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 10 12; /* Darker, richer background */
+    --foreground: 250 250 250;
+    --primary: 99 102 241; /* Indigo 500 */
+    --secondary: 168 85 247; /* Purple 500 */
+    --accent: 236 72 153; /* Pink 500 */
+    --success: 34 197 94; /* Green 500 */
+    --warning: 234 179 8; /* Yellow 500 */
+    --error: 239 68 68; /* Red 500 */
+  }
+  
+  body {
+    @apply bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-primary/30 selection:text-white;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 25%),
+        linear-gradient(to bottom, #020617, #0f172a);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-white;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Utilities - Premium Feel */
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-2xl border border-white/10 shadow-xl ring-1 ring-white/5;
+  }
+  
+  .glass-card {
+    @apply bg-slate-800/40 backdrop-blur-xl border border-white/5 hover:border-primary/50 transition-all duration-500 shadow-lg hover:shadow-primary/20 relative overflow-hidden;
+  }
+
+  /* Typography */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400;
+  }
+  
+  .brand-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-bold;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 active:scale-[0.98] border border-white/10 tracking-wide;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-xl font-medium transition-all border border-white/5 hover:border-white/20 active:scale-[0.98] backdrop-blur-sm;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2.5 bg-transparent border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white rounded-xl font-medium transition-all hover:bg-slate-800/50;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-800 rounded-full hover:bg-slate-700 border-2 border-slate-950;
+  }
+}
+
+@layer utilities {
+  /* Gradient Animations */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 4s ease infinite;
+    background-size: 200% auto;
+  }
+
+  /* Shimmer Effect */
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Slow Pulse */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+  
+  /* Text Glow */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.3);
+  }
+}
+
