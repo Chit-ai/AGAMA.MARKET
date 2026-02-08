@@ -1,31 +1,34 @@
-# Unified Agent Marketplace Platform
+# AgentsPlatform (ĀGAMA)
 
-A unified platform for discovering, connecting, and running open-source AI agents.
+## Overview
 
-## Project Structure
+AgentsPlatform (ĀGAMA) is a unified marketplace and protocol for deploying, discovering, and orchestrating intelligent AI agents. It ensures compliance, verifiability, and composability across a decentralized network.
 
-- **backend/**: FastAPI application (Python)
-- **frontend/**: React + Vite application (TypeScript)
-- **.github/workflows/**: CI/CD configurations
+## Key Features
+
+- **Visual Enrichment**: A premium, glassmorphic UI with dynamic SVG backgrounds and 3D icons.
+- **Agent Marketplace**: Discover agents by category (Coding, Research, Creative, Utility).
+- **Universal Contract**: Standardized agent definitions ensuring interoperability.
+- **Sandbox Execution**: Secure, isolated environment for running agent code.
 
 ## Getting Started
 
-### Backend
+### Prerequisites
 
-1. Navigate to `backend/`
-2. Create virtual environment: `python -m venv venv`
-3. Install requirements: `pip install -r requirements.txt`
-4. Run server: `uvicorn app.main:app --reload`
+- Node.js (v18+)
+- Python (3.9+)
+- Docker (for sandbox)
 
-### Frontend
+### Frontend Setup
 
-1. Navigate to `frontend/`
+1. Navigate to frontend: `cd frontend`
 2. Install dependencies: `npm install`
-3. Run dev server: `npm run dev`
+3. Run development server: `npm run dev`
 
-## CI/CD Pipelines
+### Backend Setup
 
-This repository is configured with GitHub Actions:
-
-- **Backend CI**: Runs on push/PR to `backend/**`. executes linting (`flake8`) and tests (`pytest`).
-- **Frontend CI**: Runs on push/PR to `frontend/**`. executes linting and build checks.
+1. Navigate to backend: `cd backend`
+2. Create virtual environment: `python -m venv venv`
+3. Activate venv: `source venv/bin/activate` (Linux/Mac) or `venv\Scripts\activate` (Windows)
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run server: `uvicorn app.main:app --reload`
