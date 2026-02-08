@@ -76,7 +76,7 @@ export function AgentDetails() {
                         </div>
                         
                         <p className="text-slate-300 text-lg max-w-2xl mb-8 leading-relaxed font-light">
-                            {agent.agama_json?.sattva?.description || "An autonomous agent conforming to the ĀGAMA protocol."}
+                            {(agent.agama_json as any)?.sattva?.description || agent.description || "An autonomous agent conforming to the ĀGAMA protocol."}
                         </p>
 
                         <div className="flex flex-wrap gap-4">
@@ -88,7 +88,7 @@ export function AgentDetails() {
                                 Connect & Deploy
                             </button>
                             <a 
-                                href={agent.agama_json?.sattva?.repository} 
+                                href={(agent.agama_json as any)?.sattva?.repository || agent.repository || '#'} 
                                 target="_blank" 
                                 rel="noreferrer"
                                 className="px-6 py-3.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white font-medium flex items-center gap-2.5 transition-all active:scale-[0.98]"
@@ -136,7 +136,7 @@ export function AgentDetails() {
                         <div>
                             <label className="text-xs text-slate-500 uppercase tracking-widest font-bold block mb-4">Domain Keywords</label>
                             <div className="flex flex-wrap gap-2.5">
-                                {agent.domain.map((tag: string) => (
+                                {agent.domain?.map((tag: string) => (
                                     <span key={tag} className="px-4 py-1.5 rounded-full bg-slate-800 border border-white/10 text-slate-300 text-sm hover:border-indigo-500/30 hover:bg-indigo-500/10 transition-colors cursor-default">
                                         #{tag}
                                     </span>
