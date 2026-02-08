@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Marketplace } from './pages/Marketplace';
 import { AgentDetails } from './pages/AgentDetails';
+import { Docs } from './pages/Docs';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
                    <div className="flex items-center gap-8 text-sm font-medium text-slate-400">
                       <Link to="/" className="hover:text-white transition-colors">Marketplace</Link>
                       <a href="#" className="hover:text-white transition-colors">Deploy</a>
-                       <a href="#" className="hover:text-white transition-colors">Docs</a>
+                       <Link to="/docs" className="hover:text-white transition-colors">Docs</Link>
                       <button className="btn-primary text-xs px-5 py-2.5">Connect Wallet</button>
                    </div>
               </div>
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Marketplace />} />
             <Route path="/agent/:id" element={<AgentDetails />} />
+            <Route path="/docs" element={<Docs />} />
           </Routes>
        </div>
     </Router>
